@@ -4,7 +4,7 @@ session_start();
  
 // Check if the user is logged in, otherwise redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
+    header("location: login_secured.php");
     exit;
 }
  
@@ -87,8 +87,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <p>Please fill out this form to reset your password.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
             <div class="form-group">
-                <label>New Password</label>
-                <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+                <label for="new_password">New Password</label>
+                <input type="password" id="new_password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
                 <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
             </div>
             <div class="form-group">
